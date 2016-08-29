@@ -1,0 +1,35 @@
+<h1>Showing All Articles</h1>
+
+<p> <%= link_to "Create New Article", new_article_path %> </p>
+
+<table>
+<% @articles.each do |f| %>
+
+	<tr>
+		<th>Title</th>
+		<th>Description</th>
+	</tr>
+
+	<tr>
+		<td>
+			Title: <%= f.title %>
+		</td>
+		<td>
+			Description <%= f.description %>
+		</td>
+		<td>
+			<%= link_to "Show Article", article_path(f) %>
+		</td>
+		<td>
+			<%= link_to "Edit Article", edit_article_path(f) %>
+		</td>
+		<td>
+			<%= link_to "Delete Article", article_path(f), method: :delete, data: {confirm: "Are you sure?"} %>
+		</td>
+	</tr>
+
+
+
+
+<% end %>
+</table>
