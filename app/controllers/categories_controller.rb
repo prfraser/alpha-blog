@@ -5,9 +5,37 @@ before_action :require_admin, except: [:index, :show]
 		@categories = Category.paginate(page: params[:page], per_page: 5)
 	end
 
-	def show
+def show
 
-	end
+@category = Category.find(params[:id])
+
+@category_articles = @category.articles.paginate(page: params[:page], per_page: 5)
+
+end
+
+def edit
+
+@category = Category.find(params[:id])
+
+end
+
+def update
+
+@category = Category.find(params[:id])
+
+if @category.update(category_params)
+
+flash[:success] = "Category name was successfully updated"
+
+redirect_to category_path(@category)
+
+else
+
+render 'edit'
+
+end
+
+end
 
 	def new
 		@category = Category.new
