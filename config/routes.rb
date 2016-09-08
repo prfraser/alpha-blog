@@ -12,4 +12,5 @@ post 'login', to: 'sessions#create'
 delete 'logout', to: 'sessions#destroy'
   resources :articles
   resources :users, except: [:new]
+  resources :categories, except: [:destroy]
 end
